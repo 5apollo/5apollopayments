@@ -1,54 +1,45 @@
 # 5 Apollo — landing page
 
-Static single-page site for 5 Apollo LLC. No build step, no dependencies, no framework.
-Everything is in one file: `index.html` contains the HTML, CSS and JavaScript.
+Static single-page site. No build step, no dependencies. `index.html` contains all markup, styles
+and JavaScript.
 
 ## Files
 
-| File | What it is |
+| File | Purpose |
 |---|---|
-| `index.html` | The entire site — markup, styles, calculator logic |
+| `index.html` | The entire site |
 | `privacy.html` | Privacy policy, linked from the footer |
-| `README.md` | This file |
-| `5-apollo-copy-sheet.xlsx` | Editable copy sheet (not deployed — keep it out of the repo, or in a `/docs` folder) |
-
-## What's on the page
-
-Sections in order: hero → effective-rate explainer → cash discount vs. traditional pricing (with
-comparison table) → savings calculator → we work for you → what you get → equipment →
-from analysis to active (JotForm) → FAQ → closing CTA → footer.
-
-**Savings calculator.** Models the Cash Discount Program only. Four inputs (monthly card volume,
-processing rate, monthly transactions, per-transaction fee) drive a live receipt and a
-"what that could fund" band showing staff hours, marketing months, and the equivalent new sales
-required at a 10% net margin. Every figure recalculates on each keystroke — nothing is hardcoded.
-The assumptions ($20/hour, $1,500/month, 10% margin) live in the JavaScript at the bottom of
-`index.html`.
-
-**Contact routing.** Every call to action points at `#get-started`, the anchor on the JotForm panel.
-There are deliberately **no `mailto:` or `tel:` links in `index.html`** — all inquiries route through
-the form so they arrive with information attached. Don't reintroduce contact links without
-deciding you want that.
+| `robots.txt` | Allows crawling, points to the sitemap |
+| `sitemap.xml` | Homepage and privacy policy |
 
 ## Deploy on GitHub Pages
 
-1. Create a public repo (e.g. `5apollo-site`).
-2. Upload `index.html`, `privacy.html` and `README.md` to the root of the `main` branch.
-3. Settings → Pages → Source: **Deploy from a branch** → Branch: `main`, folder: `/ (root)` → Save.
-4. Live in about a minute at `https://<username>.github.io/5apollo-site/`.
+1. Create a public repo and upload all four files to the root of the `main` branch.
+2. Settings → Pages → Source: **Deploy from a branch** → Branch `main`, folder `/ (root)` → Save.
+3. Live in about a minute at `https://<username>.github.io/<repo>/`.
 
-## Custom domain (5apollo.co)
+## Custom domain
 
-The domain is **`.co`**, not `.com` — `5apollo.com` was unavailable. All email addresses use
-`@5apollo.co`.
+The domain is `5apollo.co`.
 
-1. Settings → Pages → Custom domain → enter `5apollo.co` → Save. This creates a `CNAME` file in the repo.
-2. At your registrar, add four A records for the apex domain pointing to:
+1. Settings → Pages → Custom domain → `5apollo.co` → Save. This creates a `CNAME` file in the repo.
+2. At the registrar, add four A records for `@`:
    `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 3. Add a CNAME record for `www` → `<username>.github.io`.
-4. Return to Settings → Pages and tick **Enforce HTTPS** once the certificate is issued.
+4. Tick **Enforce HTTPS** once the certificate is issued.
 
-## The JotForm
+If the domain ever changes, update the URLs in the two JSON-LD blocks in `<head>`, the canonical
+tag, `robots.txt` and `sitemap.xml`.
+
+## Editing the copy
+
+Every visible string carries a `data-copy="section.key"` attribute, matching the copy sheet kept
+outside this repo. Edit the text between the tags; leave the attributes alone.
+
+The `<head>` contains two JSON-LD blocks. The `FAQPage` block duplicates the on-page FAQ answers —
+if an FAQ is edited on the page, update the schema copy to match.
+
+## The form
 
 The statement-analysis form is embedded in the panel with `id="get-started"`:
 
@@ -58,53 +49,30 @@ The statement-analysis form is embedded in the panel with `id="get-started"`:
 </div>
 ```
 
-This is the `jsform` (script) embed, which auto-resizes to the form's content. To swap forms,
-replace the `src` with the new form ID. Nothing else on the page needs to change.
+To swap forms, replace the `src` with the new JotForm ID. Nothing else needs to change.
 
-Note: the embed will not render from a `file://` path in some browsers. If it looks blank when you
-open `index.html` by double-clicking it, that's expected — it appears once served over https.
+The embed does not render from a `file://` path. It only appears once served over http/https.
 
-### Confirm on the JotForm side before launch
+## Calculator
 
-- [ ] The form has a **file upload field** accepting PDF, JPG, PNG **and HEIC**. iPhone photos
-      default to HEIC and some upload widgets reject it silently. The page promises twice that a
-      statement can be sent as "a PDF or a phone photo."
-- [ ] Email notifications are on and pointed at an inbox you actually monitor. With no email
-      fallback on the site, a misconfigured notification means leads sit in the JotForm dashboard
-      and nowhere else.
-- [ ] Suggested fields: name, business name, email, phone, current processor, monthly card volume,
-      statement upload.
+Four inputs (monthly card volume, processing rate, monthly transactions, per-transaction fee) drive
+the receipt and the savings band. Its assumptions — $20/hour staff wage, $1,500/month marketing
+budget, 10% net margin — are in the JavaScript at the bottom of `index.html`.
 
-## Before going live — site checklist
+## Links
 
-- [ ] Confirm the legal entity name in the footer disclosure and copyright (currently "5 Apollo LLC").
-- [ ] Fill the `[DATE]` and `[X] months` placeholders in `privacy.html`.
-- [ ] Decide whether to publish equipment pricing. Prices are currently omitted — see the
-      Settings tab of the copy sheet for the reasoning.
-- [ ] Confirm the fee ranges in the "What actually shows up on a statement" table match what you
-      see in the field.
-- [ ] Optional but recommended: ask PayBotX compliance for their approved ISO/MSP disclosure
-      wording, including the sponsoring member bank. The current disclosure is written so it does
-      not require the bank name, but naming it is stronger — and using their approved string
-      verbatim shifts the compliance risk onto them.
+Every call to action points at `#get-started`. There are intentionally no `mailto:` or `tel:` links
+in `index.html`; all inquiries route through the form.
 
-## Editing the copy
-
-Every visible string carries a `data-copy="section.key"` attribute. Those keys match column B of
-`5-apollo-copy-sheet.xlsx`. Edit column E (the yellow column), leave column B alone, and the page
-can be regenerated from the sheet without touching layout or styling.
-
-Colours, fonts and calculator assumptions are on the sheet's **Settings & links** tab.
-
-## Brand reference
+## Brand tokens
 
 | Token | Value | Used for |
 |---|---|---|
 | Deep sage | `#2F4429` | Buttons, dark sections, headings |
-| Sage | `#6E8A66` | Primary brand green |
+| Sage | `#6E8A66` | Primary green |
 | Sage tint | `#DDE6D8` | Section backgrounds, table headers |
 | Bone | `#F7F6F0` | Page background |
-| Brass | `#B0863A` | Accent — logo rays, step numbers, focus rings |
+| Brass | `#B0863A` | Accents, focus rings |
 
-Fonts (Google Fonts, loaded in `<head>`): **Fraunces** for headlines, **Manrope** for body,
-**JetBrains Mono** for numbers, labels and the calculator receipt.
+Fonts (Google Fonts, loaded in `<head>`): **Fraunces** headlines, **Manrope** body,
+**JetBrains Mono** numbers and labels.
