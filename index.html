@@ -119,6 +119,14 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,246,240,.92);backdro
 .compare tr:last-child td{border-bottom:0}
 .compare td:last-child{background:rgba(110,138,102,.09);font-weight:600;color:var(--sage-deep)}
 .table-scroll{overflow-x:auto}
+.lineitems{list-style:none;counter-reset:li;margin:0;padding:0;border-top:1px solid var(--line)}
+.lineitems li{counter-increment:li;padding:22px 0 22px 52px;border-bottom:1px solid var(--line);position:relative}
+.lineitems li::before{content:counter(li,decimal-leading-zero);position:absolute;left:0;top:24px;font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:600;color:var(--brass);letter-spacing:.05em}
+.lineitems h4{font-family:"Fraunces",Georgia,serif;font-size:1.12rem;font-weight:600;margin:0 0 7px;letter-spacing:-.01em}
+.lineitems p{font-size:.93rem;color:#3B4A34;max-width:74ch}
+.lineitems .check{margin-top:9px;font-size:.87rem;color:var(--sage-deep);border-left:2px solid var(--sage-mid);padding-left:13px}
+.read-total{margin-top:30px;background:var(--sage-tint);border-radius:var(--r);padding:22px 26px;font-size:.97rem;color:var(--sage-deep);font-weight:600;max-width:80ch}
+.read-cta{margin-top:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between}
 
 /* ---------- calculator ---------- */
 #calculator{background:var(--sage-tint)}
@@ -380,26 +388,62 @@ footer a{color:#C3CEBD}
       </div>
     </div>
 
-    <h3 style="margin:56px 0 22px" data-copy="how.table.title">What actually shows up on a statement</h3>
-    <div class="table-scroll">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th data-copy="how.table.c1">Line item</th>
-            <th data-copy="how.table.c2">Typical processor</th>
-            <th data-copy="how.table.c3">With 5 Apollo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td data-copy="how.table.r1a">Interchange &amp; card brand fees</td><td data-copy="how.table.r1b">1.7%–2.4%</td><td data-copy="how.table.r1c">Passed through at cost</td></tr>
-          <tr><td data-copy="how.table.r2a">Processor markup</td><td data-copy="how.table.r2b">Bundled, unstated</td><td data-copy="how.table.r2c">Stated in writing</td></tr>
-          <tr><td data-copy="how.table.r3a">Monthly statement fee</td><td data-copy="how.table.r3b">$5–$15</td><td data-copy="how.table.r3c">$0</td></tr>
-          <tr><td data-copy="how.table.r4a">PCI compliance fee</td><td data-copy="how.table.r4b">$99–$199/yr</td><td data-copy="how.table.r4c">Included</td></tr>
-          <tr><td data-copy="how.table.r5a">Monthly minimum</td><td data-copy="how.table.r5b">$25–$50</td><td data-copy="how.table.r5c">$0</td></tr>
-          <tr><td data-copy="how.table.r6a">Early termination</td><td data-copy="how.table.r6b">$295–$495</td><td data-copy="how.table.r6c">None</td></tr>
-          <tr><td data-copy="how.table.r7a">Funding time</td><td data-copy="how.table.r7b">2–3 business days</td><td data-copy="how.table.r7c">Next business day</td></tr>
-        </tbody>
-      </table>
+    <h3 style="margin:56px 0 10px" data-copy="how.read.title">How to read your own statement</h3>
+    <p class="lede" style="margin-bottom:30px" data-copy="how.read.sub">Every processor formats these differently, and some bury them across three pages. Here's what each line is, in plain English, and what to look for. Work through your own statement with this — you don't need us to do it.</p>
+
+    <ol class="lineitems">
+      <li>
+        <h4 data-copy="how.read.1t">Interchange</h4>
+        <p data-copy="how.read.1d">Set by Visa and Mastercard, paid to the bank that issued your customer's card. Nobody can negotiate this, including us — the rate depends on the card type and how the transaction was run.</p>
+        <p class="check" data-copy="how.read.1c">Look for: a separate interchange line. If you can't find one, you're on bundled pricing and the markup is hidden inside it.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.2t">Assessments and card brand fees</h4>
+        <p data-copy="how.read.2d">Small fixed fees paid to the card networks themselves, separate from interchange. Also non-negotiable, and identical no matter who processes your payments.</p>
+        <p class="check" data-copy="how.read.2c">Look for: network names — Visa, Mastercard, Discover, Amex — with small percentages attached.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.3t">Processor markup</h4>
+        <p data-copy="how.read.3d">What your provider adds on top. This is the only part of your rate that is genuinely negotiable, which is exactly why most statements make it hard to isolate.</p>
+        <p class="check" data-copy="how.read.3c">Look for: anything left after interchange and assessments. On interchange-plus pricing it's stated outright. On tiered or bundled pricing it isn't stated anywhere.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.4t">Non-qualified downgrades</h4>
+        <p data-copy="how.read.4d">Transactions that failed to meet the lowest rate you were quoted and got repriced higher. Common causes: a manually keyed card, a missing zip code, a corporate or rewards card, or a batch settled late. The quoted rate can be honest and your real cost still lands far above it.</p>
+        <p class="check" data-copy="how.read.4c">Look for: "non-qual," "mid-qual," "EIRF," "standard," or "downgrade." This is usually the single biggest gap between the rate you were sold and the rate you pay.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.5t">Per-item and batch fees</h4>
+        <p data-copy="how.read.5d">A flat charge on every transaction, plus a charge each time you settle the day's batch. Pennies individually, and they matter enormously if your average ticket is small.</p>
+        <p class="check" data-copy="how.read.5c">Look for: a per-transaction amount multiplied by your transaction count. On a $12 average ticket, thirty cents is another 2.5%.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.6t">Monthly minimum</h4>
+        <p data-copy="how.read.6d">A floor. If your processing fees for the month come in below it, you're billed the difference anyway. It costs you nothing in a busy month and bites in a slow one.</p>
+        <p class="check" data-copy="how.read.6c">Look for: a line that only appears in your quieter months.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.7t">PCI compliance and non-compliance fees</h4>
+        <p data-copy="how.read.7d">A fee for the security compliance program, billed annually or monthly. Separately, a non-compliance fee is charged when the annual questionnaire hasn't been filed — and a lot of owners have never been told the questionnaire exists.</p>
+        <p class="check" data-copy="how.read.7c">Look for: "PCI," and check whether you're paying both the program fee and a non-compliance penalty.</p>
+      </li>
+      <li>
+        <h4 data-copy="how.read.8t">Equipment lease</h4>
+        <p data-copy="how.read.8d">Usually a separate agreement from your processing contract, often with a different company, and frequently non-cancellable for its full term. Switching processors does not end it.</p>
+        <p class="check" data-copy="how.read.8c">Look for: a fixed monthly charge for hardware. Check the original lease term before you assume you can walk away.</p>
+      </li>
+    </ol>
+
+    <div class="read-total">
+      <p data-copy="how.read.total">Add every fee on the statement, divide by your total card volume, and you have your effective rate. That single number is the only fair way to compare one processor to another.</p>
+    </div>
+
+    <div class="panel read-cta">
+      <div style="max-width:58ch">
+        <h3 data-copy="how.read.cta.t">Can't find half of these on your statement?</h3>
+        <p style="font-size:.93rem;color:#3B4A34;margin-top:8px" data-copy="how.read.cta.b">That's not you missing something. Statements are formatted by the people charging the fees, and the lines that cost you most are the ones hardest to locate. Send it over and we'll mark up every one of these for you, free.</p>
+      </div>
+      <a class="btn btn-primary" href="#get-started" data-copy="how.read.cta.btn">Have us read it for you</a>
     </div>
 </div>
 </section>
