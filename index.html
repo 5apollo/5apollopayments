@@ -847,15 +847,34 @@ footer a{color:#C3CEBD}
     $('oWarn').hidden = annual>0;
   }
 
-  fees.addEventListener('input',function(){
-    var V=num(vol), F=num(fees), T=num(txns), f=num(perfee);
+  function deriveRateFromFees(){
+    var V=num(vol), F=num(fees);
     if(V>0 && F>0){
-      rate.value = Math.min(4.5, Math.max(1.5, ((F-(T*f))/V)*100)).toFixed(2);
+      rate.value = Math.min(4.5, Math.max(1.5, (F/V)*100)).toFixed(2);
+    }
+  }
+
+  fees.addEventListener('input',function(){
+    if(num(fees)>0){
+      txns.value = '';
+      perfee.value = '';
+      deriveRateFromFees();
     }
     calc();
   });
 
-  [vol,rate,txns,perfee].forEach(function(el){el.addEventListener('input',calc)});
+  vol.addEventListener('input',function(){
+    if(num(fees)>0){ deriveRateFromFees(); }
+    calc();
+  });
+
+  [rate,txns,perfee].forEach(function(el){
+    el.addEventListener('input',function(){
+      if(fees.value!==''){ fees.value=''; }
+      calc();
+    });
+  });
+
   calc();
 })();
 </script>
