@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Did Square or PayPal Hold My Funds? Dedicated vs. Aggregate Accounts | 5 Apollo</title>
+<meta name="description" content="Why Square, PayPal, and Stripe freeze merchant funds without warning, what a dedicated merchant account is, and how to tell which type of account your business is on.">
+<link rel="canonical" href="https://5apollo.co/articles/dedicated-vs-aggregate-merchant-account.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why Did Square or PayPal Hold My Funds? Dedicated vs. Aggregate Merchant Accounts">
+<meta property="og:description" content="Why Square, PayPal, and Stripe freeze merchant funds without warning, what a dedicated merchant account is, and how to tell which type of account your business is on.">
+<meta property="og:url" content="https://5apollo.co/articles/dedicated-vs-aggregate-merchant-account.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%236E8A66'/%3E%3C/svg%3E">
+<style>:root{--ink:#17210F;--sage-deep:#2F4429;--sage:#6E8A66;--sage-mid:#93AC8B;--sage-tint:#DDE6D8;--bone:#F7F6F0;--paper:#FFFFFF;--brass:#B0863A;--line:rgba(47,68,41,.16);--r:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.015em}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+a{color:var(--sage-deep)}
+header.site{position:sticky;top:0;z-index:10;background:rgba(247,246,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:9px;font-family:"Fraunces",serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+.nav a.cta{margin-left:auto;background:var(--sage-deep);color:var(--bone);padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.88rem;white-space:nowrap}
+.crumb{font-size:.78rem;color:var(--sage);margin:34px 0 16px;font-family:"JetBrains Mono",monospace}
+.crumb a{color:var(--sage)}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);font-family:"JetBrains Mono",monospace}
+h1{font-size:clamp(1.85rem,4.4vw,2.6rem);margin:14px 0 16px}
+.dek{font-size:1.07rem;color:#3B4A34;max-width:64ch}
+.meta{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:.8rem;color:var(--sage);font-family:"JetBrains Mono",monospace}
+.body{padding:34px 0 10px}
+.body h2{font-size:1.45rem;margin:40px 0 14px}
+.body h3{font-size:1.12rem;margin:26px 0 10px}
+.body p{margin:0 0 18px;color:#293A22}
+.body ul,.body ol{margin:0 0 18px;padding-left:22px;color:#293A22}
+.body li{margin-bottom:9px}
+.callout{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--brass);border-radius:10px;padding:18px 22px;margin:26px 0;font-size:.95rem}
+.callout strong{color:var(--sage-deep)}
+.tblwrap{overflow-x:auto;margin:26px 0}
+table.cmp{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:520px}
+table.cmp th,table.cmp td{padding:12px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.cmp th{background:var(--sage-tint);color:var(--sage-deep);font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp td.num{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.src{font-size:.78rem;color:var(--sage);margin-top:-14px;margin-bottom:26px;font-family:"JetBrains Mono",monospace}
+.bars{margin:26px 0;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px}
+.bar-row{margin-bottom:16px}
+.bar-row:last-child{margin-bottom:0}
+.bar-lab{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:6px}
+.bar-lab b{font-family:"JetBrains Mono",monospace;color:var(--sage-deep)}
+.bar-track{height:12px;background:var(--sage-tint);border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;background:var(--sage-deep);border-radius:999px}
+.bar-fill.alt{background:var(--brass)}
+.cta-band{background:var(--sage-deep);color:var(--bone);border-radius:var(--r);padding:32px 28px;text-align:center;margin:46px 0}
+.cta-band h3{color:var(--bone);margin:0 0 10px;font-size:1.3rem}
+.cta-band p{color:#D9E2D4;max-width:52ch;margin:0 auto 20px;font-size:.95rem}
+.cta-band a{display:inline-block;background:var(--bone);color:var(--sage-deep);padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:700}
+.related{border-top:1px solid var(--line);padding-top:26px;margin-top:10px}
+.related h3{font-size:1rem;margin:0 0 12px}
+.related ul{list-style:none;padding:0;margin:0}
+.related li{margin-bottom:8px;font-size:.93rem}
+footer.site{background:var(--ink);color:#C3CEBD;padding:40px 0;font-size:.85rem;margin-top:44px}
+footer.site a{color:#C3CEBD}
+.sources{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:34px 0 10px}
+.sources h3{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:0 0 12px;font-weight:600}
+.sources ol{margin:0;padding-left:20px;font-size:.87rem;line-height:1.6}
+.sources li{margin-bottom:9px;color:#3B4A34}
+.sources a{word-break:break-word}
+.verified{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-deep);background:var(--sage-tint);padding:4px 10px;border-radius:999px;font-weight:600;margin-bottom:14px}
+.disclaimer{font-size:.78rem;color:#7C8877;margin-top:20px;max-width:70ch;line-height:1.55}
+</style>
+</head>
+<body>
+<header class="site">
+  <nav class="nav">
+    <a class="brand" href="../index.html"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="6.4" fill="#2F4429"/><g stroke="#B0863A" stroke-width="2" stroke-linecap="round"><path d="M16 2.6v4.2"/><path d="M28.2 11.4l-4 1.3"/><path d="M23.5 27.4l-2.5-3.4"/><path d="M8.5 27.4l2.5-3.4"/><path d="M3.8 11.4l4 1.3"/></g></svg> 5 Apollo</a>
+    <a class="cta" href="../index.html#get-started">Free statement analysis</a>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Guides</a> / Dedicated vs. Aggregate</p>
+  <article>
+    <header>
+      <p class="eyebrow">Merchant Accounts</p>
+      <h1>Why Did Square or PayPal Hold My Funds? Dedicated vs. Aggregate Merchant Accounts</h1>
+      <p class="dek">If a processor has ever frozen your money with no warning and a form-letter explanation, the cause is not bad luck. It is the type of account you are on &mdash; and most owners are never told there are two.</p>
+      <p class="meta">Updated August 2026 &middot; 5 Apollo</p>
+    </header>
+    <div class="body">
+<p>Every business that takes cards has a merchant account. What most owners never learn is that there are two fundamentally different structures behind that account, and which one you are on determines whether an unusually good week can get your money frozen.</p>
+
+<h2>What an aggregate account is</h2>
+<p>Square, PayPal, Stripe's standard onboarding, and similar sign-up-in-five-minutes processors place your business inside a single shared master merchant account alongside thousands of unrelated businesses. You are never individually underwritten up front &mdash; that is precisely why signup is instant. Instead, the aggregator's risk system monitors your transactions <em>after</em> they happen, and if the automated model flags something as unusual, it can hold the funds first and review later.</p>
+<p>This is why "Square is holding my money" and "PayPal froze my funds" are among the most common complaints in this industry. It is not a malfunction. It is the model working as designed. A sudden volume spike, an unusually large single ticket, a new product category, a rise in chargebacks &mdash; any of these can trip a threshold. And because nobody ever underwrote your business specifically, there is often no one who can look at your account and say "that is normal for them."</p>
+
+<h2>What a dedicated merchant account is</h2>
+<p>A dedicated account means your business is individually underwritten by a sponsoring bank before you process a single transaction. You get your own merchant ID, reviewed against your actual business type, expected volume, and processing history. Setup takes a day or two rather than five minutes.</p>
+<p>What you buy with that delay is context. The bank already knows what normal looks like for your business, which is the entire reason holds are rarer and far less likely to arrive without warning.</p>
+
+<div class="tblwrap"><table class="cmp">
+<thead><tr><th></th><th>Aggregate (Square, PayPal, etc.)</th><th>Dedicated</th></tr></thead>
+<tbody>
+<tr><td><strong>Setup time</strong></td><td>Instant, no underwriting</td><td>1&ndash;2 business days, individually underwritten</td></tr>
+<tr><td><strong>Risk review</strong></td><td>Automated, after the transaction</td><td>Up front, against your actual business</td></tr>
+<tr><td><strong>Fund holds</strong></td><td>Common on volume spikes and large tickets, often unannounced</td><td>Rare &mdash; your volume pattern is already expected</td></tr>
+<tr><td><strong>Who you reach</strong></td><td>Ticket queue and automated escalation</td><td>A person who can see your specific account</td></tr>
+<tr><td><strong>Pricing</strong></td><td>Flat published rate, same for everyone</td><td>Negotiable, based on your volume and profile</td></tr>
+<tr><td><strong>Best fit</strong></td><td>New, low-volume, or seasonal sellers</td><td>Established businesses with steady or growing volume</td></tr>
+</tbody></table></div>
+
+<h2>When an aggregator is genuinely the right call</h2>
+<p>This is not a blanket case against aggregators. For a brand-new business testing an idea, a weekend pop-up, or anyone whose volume is too small or unpredictable to justify underwriting, they are the correct tool and the pricing is fair. Square in particular publishes every rate openly, which is more than most of the industry does.</p>
+<p>The tradeoff only turns into a real problem once your volume is stable and growing &mdash; which, inconveniently, is exactly when an unexpected hold does the most damage. Payroll, rent, and your produce order do not wait for a risk review to clear.</p>
+
+<h2>How to tell which one you are on right now</h2>
+<ul>
+<li>If you signed up online in minutes with no questions about your specific business, you are almost certainly on an aggregate account.</li>
+<li>If someone asked for financials, processing history, or a real application before approving you, you likely have a dedicated account.</li>
+<li>If your funds have ever been held with a generic explanation and no direct number to call, that is the aggregate model.</li>
+<li>If your statement shows a flat published rate identical to what the provider advertises publicly, that is aggregate pricing. Dedicated accounts show interchange and markup separately.</li>
+</ul>
+
+<h2>What switching actually involves</h2>
+<p>Moving to a dedicated account means an application and underwriting &mdash; typically a day or two &mdash; and in most cases new equipment, since terminals are usually locked to a processor. What it does not require is downtime: the new account is approved and the hardware programmed before you switch anything over.</p>
+
+<div class="cta-band"><h3>Find out which account you are on</h3><p>Send us your current statement. We will tell you whether you are on an aggregate account and what a dedicated one would look like at your volume.</p><a href="../index.html#get-started">Get a free statement analysis</a></div>
+<div class="sources"><h3>Sources</h3><ol><li>Square, Understanding Our Fees &mdash; published flat-rate pricing typical of the aggregate model &mdash; <a href="https://squareup.com/us/en/payments/our-fees" target="_blank" rel="noopener">squareup.com</a></li><li>Square Support, Learn about Square fees &mdash; <a href="https://squareup.com/help/us/en/article/5068-what-are-square-s-fees" target="_blank" rel="noopener">squareup.com</a></li><li>Toast pricing page, describing itself as a payment facilitator rather than a processor &mdash; <a href="https://pos.toasttab.com/pricing" target="_blank" rel="noopener">pos.toasttab.com</a></li></ol><p style="font-size:.82rem;color:#5A6852;margin:12px 0 0">This article describes how the two account structures work in general industry practice. Individual providers do not publish their internal risk or hold criteria, so the specific triggers described are drawn from common patterns rather than from any provider's published policy. Check your own provider's user agreement for the terms that bind your account.</p></div>
+<p class="disclaimer">Providers do not publish their internal risk or hold criteria; the patterns described here are general industry practice, not any provider's stated policy. This article is provided for general educational purposes and reflects information available as of August 2026. It is not legal or compliance advice, and it is not a substitute for reviewing your own merchant agreement or consulting an attorney about your specific situation. Card network rules, state law, and processor pricing change; verify current requirements with your processor or the relevant regulator before acting.</p>
+    </div>
+  </article>
+  <div class="related">
+    <h3>Related guides</h3>
+    <ul><li><a href="ny-surcharge-law.html">Is credit card surcharging legal in New York?</a></li><li><a href="toast-vs-square-pricing.html">Toast vs. Square: what each actually costs</a></li><li><a href="why-did-my-processing-rate-go-up.html">Why did my processing rate go up?</a></li></ul>
+  </div>
+</main>
+<footer class="site">
+  <div class="wrap"><p>&copy; 2026 5 Apollo LLC &middot; <a href="../index.html">5apollo.co</a> &middot; <a href="../privacy.html">Privacy</a></p></div>
+</footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article",
+"headline":"Why Did Square or PayPal Hold My Funds? Dedicated vs. Aggregate Merchant Accounts",
+"description":"Why Square, PayPal, and Stripe freeze merchant funds without warning, what a dedicated merchant account is, and how to tell which type of account your business is on.",
+"datePublished":"2026-08-04","dateModified":"2026-08-04",
+"author":{"@type":"Organization","name":"5 Apollo"},
+"publisher":{"@type":"Organization","name":"5 Apollo"},
+"mainEntityOfPage":"https://5apollo.co/articles/dedicated-vs-aggregate-merchant-account.html"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://5apollo.co/"},
+{"@type":"ListItem","position":2,"name":"Guides","item":"https://5apollo.co/articles/"},
+{"@type":"ListItem","position":3,"name":"Dedicated vs. Aggregate","item":"https://5apollo.co/articles/dedicated-vs-aggregate-merchant-account.html"}]}
+</script>
+</body>
+</html>
