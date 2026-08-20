@@ -34,6 +34,7 @@
   --r:14px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{
@@ -273,7 +274,7 @@ footer a{color:#C3CEBD}
     "name": "Payment services",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cash Discount Program", "description": "Dual pricing setup that moves card processing cost to the card-paying customer, configured for state and card network disclosure rules." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Traditional Credit Card Processing", "description": "Interchange-plus processing with the markup stated in writing and no long-term contract." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Traditional Credit Card Processing", "description": "The merchant absorbs the processing cost through normal pricing, with the lowest available rate secured and no long-term contract." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Free Merchant Statement Analysis", "description": "Line-by-line review of an existing merchant statement identifying effective rate, markup and hidden fees. No cost and no obligation." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "POS Systems and Payment Terminals", "description": "Countertop terminals, wireless terminals, online gateways and full point-of-sale systems from Clover, Dejavoo and Valor." } }
     ]
@@ -290,7 +291,8 @@ footer a{color:#C3CEBD}
     { "@type": "Question", "name": "Can I use my existing equipment?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes some equipment can be reprogrammed, but in most cases you'll need new equipment. Many businesses qualify for free equipment or discounted pricing." } },
     { "@type": "Question", "name": "I'm locked into a current contract - can I switch?", "acceptedAnswer": { "@type": "Answer", "text": "Many contracts can be cancelled for $300 to $500, and the monthly processing savings usually cover that cancellation fee easily. Bring your current agreement along with your most recent processing statement and we'll review the exit terms together." } },
     { "@type": "Question", "name": "Do I need to sign a long-term contract?", "acceptedAnswer": { "@type": "Answer", "text": "No long-term contracts. We believe in earning your business every month, the honest way." } },
-    { "@type": "Question", "name": "What businesses is this for?", "acceptedAnswer": { "@type": "Answer", "text": "Any business that takes credit cards can benefit. That includes restaurants, cafes, retail, salons, gyms, contractors, auto shops, medical practices, lawyers, accountants and e-commerce." } }
+    { "@type": "Question", "name": "What businesses is this for?", "acceptedAnswer": { "@type": "Answer", "text": "Any business that takes credit cards can benefit. That includes restaurants, cafes, retail, salons, gyms, contractors, auto shops, medical practices, lawyers, accountants and e-commerce." } },
+    { "@type": "Question", "name": "Do you offer business funding or loans?", "acceptedAnswer": { "@type": "Answer", "text": "We can connect active processing clients with a funding partner who offers merchant cash advance and alternative funding for things like equipment, staffing or expansion. We're not the lender — approval, terms and timelines are set entirely by the funding partner, and approval isn't guaranteed. If it's something you want to explore, ask once you're set up with us and we'll make the introduction." } }
   ]
 }
 </script>
@@ -330,7 +332,7 @@ footer a{color:#C3CEBD}
     <div>
       <p class="eyebrow" data-copy="hero.eyebrow">Payment Processing · POS Systems · Merchant Services</p>
       <h1 data-copy="hero.h1">Cash discount or lowest rates. <em>Both live here.</em></h1>
-      <p class="lede" data-copy="hero.sub">Stop losing money just to accept payments. Not every business is the same. Choose cash discount or traditional processing, and keep more of every dollar either way. We'll help you find the perfect payment setup.</p>
+      <p class="lede" data-copy="hero.sub">We're not chasing the lowest quote in your inbox — we're the ones who actually read your statement first. Line by line, we find what's really costing you, then match you to the program that fits how your business runs: cash discount or traditional processing, set up right the first time.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#calculator" data-copy="hero.cta1">See how much you can save</a>
       </div>
@@ -461,7 +463,13 @@ footer a{color:#C3CEBD}
       <p class="lede" data-copy="calc.sub">Adjust the numbers to match your current processing. Two of them are on the front page of your statement, and the other two are on page two.</p>
     </div>
 
-    <p class="calc-badge"><span class="dot"></span><span data-copy="calc.badge">This calculator models the Cash Discount Program</span></p>
+    <div class="toggle" role="tablist" aria-label="Pricing program">
+      <button type="button" id="modeCash" role="tab" aria-selected="true" data-copy="calc.mode.cash">Cash Discount</button>
+      <button type="button" id="modeTrad" role="tab" aria-selected="false" data-copy="calc.mode.trad">Traditional Pricing</button>
+    </div>
+
+    <p class="calc-badge" id="badgeCash"><span class="dot"></span><span data-copy="calc.badge">This calculator models the Cash Discount Program</span></p>
+    <p class="calc-badge" id="badgeTrad" hidden><span class="dot"></span><span data-copy="calc.badge.trad">This calculator shows your current cost under traditional pricing</span></p>
 
     <div class="calc-grid">
       <div>
@@ -492,8 +500,6 @@ footer a{color:#C3CEBD}
           <label for="fees" data-copy="calc.f3.label">Or: total fees on last month's statement</label>
           <input class="input" id="fees" type="number" min="0" step="10" placeholder="1,750" inputmode="numeric">
         </div>
-
-        <p style="font-size:.85rem;color:#3B4A34;margin-top:26px;padding-top:20px;border-top:1px dashed var(--line)" data-copy="calc.alt">Prefer to stay on traditional pricing? That's fine — send us a statement and we'll quote you the lowest rate we can get instead.</p>
       </div>
 
       <div class="receipt" aria-live="polite">
@@ -504,16 +510,22 @@ footer a{color:#C3CEBD}
         <div class="r-row"><span data-copy="calc.r3">Annual loss to fees</span><b id="oNow">$21,000</b></div>
         <div class="r-row"><span data-copy="calc.r7">Five-year loss</span><b id="oFive">$105,000</b></div>
         <div class="r-total">
-          <div class="label" data-copy="calc.r5">Estimated annual savings</div>
-          <div class="r-big" id="oSave">$21,000</div>
-          <p class="r-sub" data-copy="calc.receipt.note">Under the Cash Discount Program the cost of processing is built into your posted prices, so your transaction fees drop to zero. This is an estimate built on the numbers above, not a quote — real figures come off your statement.</p>
+          <div id="totalCash">
+            <div class="label" data-copy="calc.r5">Estimated annual savings</div>
+            <div class="r-big" id="oSave">$21,000</div>
+            <p class="r-sub" data-copy="calc.receipt.note">Under the Cash Discount Program the cost of processing is built into your posted prices, so your transaction fees drop to zero. This is an estimate built on the numbers above, not a quote — real figures come off your statement.</p>
+          </div>
+          <div id="totalTrad" hidden>
+            <p class="r-sub" data-copy="calc.receipt.note.trad">That's what traditional pricing is costing you today, based on what you entered. We can't promise the exact improvement without your real statement — every processor's fee structure is different — but we can promise it'll be lower. You've basically already started the process.</p>
+          </div>
           <p class="r-warn" id="oWarn" hidden data-copy="calc.receipt.warn">Enter your numbers above to see your estimate.</p>
         </div>
-        <a class="btn btn-primary" style="margin-top:22px;width:100%" href="#get-started" data-copy="calc.cta">Check this against my real statement</a>
+        <a class="btn btn-primary" id="ctaCash" style="margin-top:22px;width:100%" href="#get-started" data-copy="calc.cta">Check this against my real statement</a>
+        <a class="btn btn-primary" id="ctaTrad" hidden style="margin-top:22px;width:100%" href="#get-started" data-copy="calc.trad.cta">Send the statement and get your rate</a>
       </div>
     </div>
 
-    <div class="fund">
+    <div class="fund" id="fundPanel">
       <h3 data-copy="calc.fund.title">That's <span id="oSave2">$21,000</span> a year back in your business.</h3>
       <p class="fsub" data-copy="calc.fund.sub">Hire another set of hands. Take the vacation you keep putting off. Reinvest it in the equipment, the marketing or the buildout you've been holding back on. It's already your money — right now you're just paying it to someone else.</p>
       <div class="fund-grid">
@@ -651,6 +663,38 @@ footer a{color:#C3CEBD}
 
 <div class="flute"></div>
 
+<!-- ============ FUNDING ============ -->
+<section id="growth">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" data-copy="growth.eyebrow">For active clients</p>
+      <h2 data-copy="growth.h2">Once you're processing with us, we can help fund what's next.</h2>
+      <p class="lede" data-copy="growth.sub">Growth capital for equipment, a buildout, hiring ahead of a busy season, or inventory — connected through our funding partner, not us. We don't underwrite it and we don't set the terms; we make the introduction and you decide if it's right for your business.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3 data-copy="growth.1t">New equipment or a buildout</h3>
+        <p data-copy="growth.1b">Upgrade hardware, renovate a space, or open a second location without waiting on cash flow to catch up.</p>
+      </div>
+      <div class="card">
+        <h3 data-copy="growth.2t">Staffing ahead of demand</h3>
+        <p data-copy="growth.2b">Bring on help before your busy season starts, not after you've already lost the walk-in traffic.</p>
+      </div>
+      <div class="card">
+        <h3 data-copy="growth.3t">Inventory and working capital</h3>
+        <p data-copy="growth.3b">Smooth out the gap between paying suppliers and getting paid by customers.</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:26px">
+      <p style="font-size:.93rem;color:#3B4A34" data-copy="growth.elig">Available once you're an active 5 Apollo processing client — this is a benefit of working with us, not a way in.</p>
+      <p style="font-size:.82rem;color:#5A6852;margin-top:14px" data-copy="growth.disclosure">Funding is provided by a separate, independent underwriter. 5 Apollo is not a lender and does not make credit decisions — approval, terms and timelines are determined entirely by the funding partner, and approval isn't guaranteed.</p>
+      <a class="btn btn-primary" style="margin-top:20px" href="#get-started" data-copy="growth.cta">Ask about funding options</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WHERE WE WORK ============ -->
 <section id="where" style="background:var(--sage-tint)">
   <div class="wrap">
@@ -773,6 +817,11 @@ footer a{color:#C3CEBD}
       <details>
         <summary data-copy="faq.q8">What businesses is this for?</summary>
         <div class="a"><p data-copy="faq.a8">Any business that takes credit cards can benefit. That includes restaurants, cafés, retail, salons, gyms, contractors, auto shops, medical practices, lawyers, accountants, e-commerce and more.</p></div>
+      </details>
+
+      <details>
+        <summary data-copy="faq.q9">Do you offer business funding or loans?</summary>
+        <div class="a"><p data-copy="faq.a9">We can connect active processing clients with a funding partner who offers merchant cash advance and alternative funding for things like equipment, staffing or expansion. We're not the lender — approval, terms and timelines are set entirely by the funding partner, and approval isn't guaranteed. If it's something you want to explore, ask once you're set up with us and we'll make the introduction.</p></div>
       </details>
 
     </div>
@@ -910,6 +959,27 @@ footer a{color:#C3CEBD}
       calc();
     });
   });
+
+  var modeCash=$('modeCash'), modeTrad=$('modeTrad');
+  var badgeCash=$('badgeCash'), badgeTrad=$('badgeTrad');
+  var totalCash=$('totalCash'), totalTrad=$('totalTrad');
+  var ctaCash=$('ctaCash'), ctaTrad=$('ctaTrad');
+  var fundPanel=$('fundPanel');
+
+  function setMode(trad){
+    modeCash.setAttribute('aria-selected', trad?'false':'true');
+    modeTrad.setAttribute('aria-selected', trad?'true':'false');
+    badgeCash.hidden = trad;
+    badgeTrad.hidden = !trad;
+    totalCash.hidden = trad;
+    totalTrad.hidden = !trad;
+    ctaCash.hidden = trad;
+    ctaTrad.hidden = !trad;
+    fundPanel.hidden = trad;
+  }
+  modeCash.addEventListener('click',function(){ setMode(false); });
+  modeTrad.addEventListener('click',function(){ setMode(true); });
+  setMode(false);
 
   calc();
 })();
