@@ -73,6 +73,10 @@ footer.site a{color:#C3CEBD}
 .sources a{word-break:break-word}
 .verified{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-deep);background:var(--sage-tint);padding:4px 10px;border-radius:999px;font-weight:600;margin-bottom:14px}
 .disclaimer{font-size:.78rem;color:#7C8877;margin-top:20px;max-width:70ch;line-height:1.55}
+
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0}
 </style>
 </head>
 <body>
@@ -89,10 +93,22 @@ footer.site a{color:#C3CEBD}
       <p class="eyebrow">Fees</p>
       <h1>Why Did My Credit Card Processing Rate Go Up?</h1>
       <p class="dek">Nobody called. Nothing changed on your end. The bill is just higher. Here are the seven reasons this usually happens, in rough order of how often we see them.</p>
-      <p class="meta">Updated August 2026 &middot; 5 Apollo</p>
+      <p class="meta">Updated October 2026 &middot; 5 Apollo</p>
     </header>
     <div class="body">
 <p>A processing rate going up quietly is one of the most common complaints in this industry, and it is almost never a billing error. It is usually one of seven things &mdash; and six of them are identifiable from your own statement in about ten minutes.</p>
+
+<h2>Start here: match what you see to the likely cause</h2>
+<div class="tblwrap"><table class="cmp">
+<thead><tr><th>What you notice</th><th>Most likely cause</th></tr></thead>
+<tbody>
+<tr><td>Increase landed 12 or 24 months after you signed</td><td>7. Introductory rate expired</td></tr>
+<tr><td>A new line item appeared</td><td>6. A fee was added, not a rate</td></tr>
+<tr><td>More &ldquo;non-qual,&rdquo; &ldquo;mid-qual&rdquo; or &ldquo;standard&rdquo; lines</td><td>4. More transactions are downgrading</td></tr>
+<tr><td>Same rates, but your average ticket dropped</td><td>5. Smaller tickets against a fixed per-item fee</td></tr>
+<tr><td>Markup is higher than a year ago</td><td>1. A scheduled increase you agreed to</td></tr>
+<tr><td>More rewards or corporate cards in the mix</td><td>3. Card mix shifted</td></tr>
+</tbody></table></div>
 
 <h2>1. A scheduled rate increase you technically agreed to</h2>
 <p>Many processing agreements permit the provider to raise your markup with written notice, and that notice frequently arrives as a line in a statement footer or a mailed insert nobody reads. The increase is legitimate under the contract you signed, which is why it does not feel like it needs a phone call.</p>
@@ -117,6 +133,7 @@ footer.site a{color:#C3CEBD}
 <h2>6. A fee got added, not a rate</h2>
 <p>PCI non-compliance fees, monthly minimums, statement fees, "regulatory" or "network access" fees. None of these change your rate. All of them raise your effective cost, and a PCI non-compliance fee in particular is often charged because an annual questionnaire nobody mentioned went unfiled.</p>
 <p><strong>How to check:</strong> compare the fixed-fee lines month over month. New line items are easy to spot once you are looking for them.</p>
+<p>Related fees worth knowing by name: PCI compliance and non-compliance fees, monthly minimums and equipment lease charges are all covered in our guide to <a href="how-to-read-your-merchant-statement.html">reading your own merchant statement</a>.</p>
 
 <h2>7. Your introductory rate expired</h2>
 <p>Some agreements carry a promotional rate for an initial period, after which pricing reverts. If the increase landed almost exactly twelve or twenty-four months after you signed, this is very likely it.</p>
@@ -124,6 +141,10 @@ footer.site a{color:#C3CEBD}
 <h2>Work out what actually changed</h2>
 <p>Pull your most recent statement and one from twelve months ago. For each, add every fee and divide by total card volume. Comparing those two effective rates tells you the size of the change. Then work down the list above to find the cause &mdash; the categories are distinguishable once both numbers are in front of you.</p>
 <div class="callout"><strong>Worth knowing:</strong> causes 1, 4, 5, 6, and 7 are all addressable, either by renegotiating, changing how transactions are run, or moving. Causes 2 and 3 are genuinely outside anyone's control &mdash; but they should move your cost by a fraction of a percent, not by a lot. If your increase is larger than that and your processor blames interchange, the numbers on your own statement will show you whether that holds up.</div>
+
+<h2>A worked example</h2>
+<p>Suppose last year you processed $50,000 in card volume across 1,000 transactions and paid $1,450 in total fees, an effective rate of 2.90%, including a $0.30 per-item fee on each transaction. This year the volume is the same $50,000, but the average ticket shrank, so you ran 1,400 transactions. That is 400 more per-item fees, or $120 more, and if a $30 PCI non-compliance fee also shows up that month, your fees are $1,600. Divide by $50,000 and your effective rate is 3.20%, up from 2.90%. Two separate causes, neither of them a rate change. This is an illustration, not a prediction for your account, and it is why the effective rate is the only number worth comparing.</p>
+<p>You can run your own numbers in the <a href="../index.html#calculator">calculator on our homepage</a>.</p>
 
 <h2>What to do next</h2>
 <ol>
@@ -133,24 +154,29 @@ footer.site a{color:#C3CEBD}
 <li><strong>Check your contract for auto-renewal and termination terms</strong> before making a decision, so a switch does not cost more than it saves.</li>
 </ol>
 
+<p>If your rate has crept up and you would rather fix it than live with it, there are two real options: a <a href="../merchant-services.html">lower-rate traditional setup</a> with an honest effective-rate quote, or a <a href="../cash-discount-program.html">cash discount program</a> that removes the processing fee from your side of the ledger entirely, where your business suits it.</p>
+<h2>Frequently asked questions</h2><details><summary>Why did my credit card processing rate go up?</summary><p>Almost never a billing error. The usual causes are a scheduled markup increase you agreed to, interchange changes, a shift in card mix, more downgraded transactions, a smaller average ticket against a fixed per-item fee, a newly added fee, or an expired introductory rate. Comparing your effective rate on a current statement and one from a year ago shows the size of the change.</p></details><details><summary>How do I calculate my effective rate?</summary><p>Add every fee on the statement and divide by total card volume. That single number is comparable across any two processors, unlike a headline rate.</p></details><details><summary>What is a non-qualified downgrade?</summary><p>A transaction that failed to meet the criteria for your quoted rate and was repriced higher. Common causes are manually keyed cards, a missing zip code on card-not-present sales, and batches settled late.</p></details><details><summary>Can I get my processing rate lowered?</summary><p>Often. Causes such as a scheduled markup increase, downgrades, added fees and expired promotional pricing are addressable by renegotiating, changing how transactions are run, or moving. Interchange changes and card mix are outside anyone&rsquo;s control but should move your cost only a fraction of a percent.</p></details><details><summary>Will I pay a fee to leave my processor?</summary><p>It depends on your agreement. In our experience many contracts can be cancelled for $300&ndash;$500, and an equipment lease may be a separate, non-cancellable agreement. Check the termination and auto-renewal terms before deciding.</p></details><details><summary>Does 5 Apollo charge to review my statement?</summary><p>No. The statement analysis is free and carries no obligation, and we will tell you if staying where you are is the right call.</p></details>
 <div class="cta-band"><h3>Find out exactly what changed</h3><p>Send us your current statement and one from a year ago. We will show you precisely which of the seven causes moved your rate, free.</p><a href="../index.html#get-started">Get a free statement analysis</a></div>
 <div class="sources"><h3>Sources</h3><ol><li>Square, Understanding Our Fees &mdash; published rates for comparison &mdash; <a href="https://squareup.com/us/en/payments/our-fees" target="_blank" rel="noopener">squareup.com</a></li><li>PCI Security Standards Council &mdash; on the compliance questionnaire behind PCI fees &mdash; <a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener">pcisecuritystandards.org</a></li><li>New York Department of State business resources &mdash; <a href="https://dos.ny.gov/business-resources" target="_blank" rel="noopener">dos.ny.gov</a></li></ol><p style="font-size:.82rem;color:#5A6852;margin:12px 0 0">Interchange rates are set by Visa and Mastercard and revised periodically; Ask your processor for the schedule that applies to your account and the effective date of any change.</p></div>
-<p class="disclaimer">Interchange schedules and processor terms vary by account. This article is provided for general educational purposes and reflects information available as of August 2026. It is not legal or compliance advice, and it is not a substitute for reviewing your own merchant agreement or consulting an attorney about your specific situation. Card network rules, state law, and processor pricing change; verify current requirements with your processor or the relevant regulator before acting.</p>
+<p class="disclaimer">Interchange schedules and processor terms vary by account. This article is provided for general educational purposes and reflects information available as of October 2026. It is not legal or compliance advice, and it is not a substitute for reviewing your own merchant agreement or consulting an attorney about your specific situation. Card network rules, state law, and processor pricing change; verify current requirements with your processor or the relevant regulator before acting.</p>
     </div>
   </article>
   <div class="related">
     <h3>Related guides</h3>
-    <ul><li><a href="how-to-read-your-merchant-statement.html">How to read your own merchant statement</a></li><li><a href="toast-vs-square-pricing.html">Toast vs. Square: what each actually costs</a></li><li><a href="ny-surcharge-law.html">Is credit card surcharging legal in New York?</a></li></ul>
+    <ul><li><a href="how-to-read-your-merchant-statement.html">How to read your own merchant statement</a></li><li><a href="../merchant-services.html">Merchant services and lowest-rate processing</a></li><li><a href="../cash-discount-program.html">Cash discount program</a></li><li><a href="toast-vs-square-pricing.html">Toast vs. Square: what each actually costs</a></li><li><a href="ny-surcharge-law.html">Is credit card surcharging legal in New York?</a></li></ul>
   </div>
 </main>
 <footer class="site">
   <div class="wrap"><p>&copy; 2026 5 Apollo LLC &middot; <a href="../index.html">5apollo.co</a> &middot; <a href="../privacy.html">Privacy</a></p></div>
 </footer>
 <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why did my credit card processing rate go up?", "acceptedAnswer": {"@type": "Answer", "text": "Almost never a billing error. The usual causes are a scheduled markup increase you agreed to, interchange changes, a shift in card mix, more downgraded transactions, a smaller average ticket against a fixed per-item fee, a newly added fee, or an expired introductory rate. Comparing your effective rate on a current statement and one from a year ago shows the size of the change."}}, {"@type": "Question", "name": "How do I calculate my effective rate?", "acceptedAnswer": {"@type": "Answer", "text": "Add every fee on the statement and divide by total card volume. That single number is comparable across any two processors, unlike a headline rate."}}, {"@type": "Question", "name": "What is a non-qualified downgrade?", "acceptedAnswer": {"@type": "Answer", "text": "A transaction that failed to meet the criteria for your quoted rate and was repriced higher. Common causes are manually keyed cards, a missing zip code on card-not-present sales, and batches settled late."}}, {"@type": "Question", "name": "Can I get my processing rate lowered?", "acceptedAnswer": {"@type": "Answer", "text": "Often. Causes such as a scheduled markup increase, downgrades, added fees and expired promotional pricing are addressable by renegotiating, changing how transactions are run, or moving. Interchange changes and card mix are outside anyone’s control but should move your cost only a fraction of a percent."}}, {"@type": "Question", "name": "Will I pay a fee to leave my processor?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your agreement. In our experience many contracts can be cancelled for $300–$500, and an equipment lease may be a separate, non-cancellable agreement. Check the termination and auto-renewal terms before deciding."}}, {"@type": "Question", "name": "Does 5 Apollo charge to review my statement?", "acceptedAnswer": {"@type": "Answer", "text": "No. The statement analysis is free and carries no obligation, and we will tell you if staying where you are is the right call."}}]}
+</script>
+<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article",
 "headline":"Why Did My Credit Card Processing Rate Go Up?",
 "description":"Your processing rate went up and nobody told you. Here are the seven most common causes, how to identify which one applies to you, and what to do about each.",
-"datePublished":"2026-08-04","dateModified":"2026-08-04",
+"datePublished":"2026-08-04","dateModified":"2026-10-29",
 "author":{"@type":"Organization","name":"5 Apollo"},
 "publisher":{"@type":"Organization","name":"5 Apollo"},
 "mainEntityOfPage":"https://5apollo.co/articles/why-did-my-processing-rate-go-up.html"}

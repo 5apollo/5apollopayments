@@ -73,6 +73,10 @@ footer.site a{color:#C3CEBD}
 .sources a{word-break:break-word}
 .verified{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-deep);background:var(--sage-tint);padding:4px 10px;border-radius:999px;font-weight:600;margin-bottom:14px}
 .disclaimer{font-size:.78rem;color:#7C8877;margin-top:20px;max-width:70ch;line-height:1.55}
+
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0}
 </style>
 </head>
 <body>
@@ -89,10 +93,12 @@ footer.site a{color:#C3CEBD}
       <p class="eyebrow">New York Compliance</p>
       <h1>Is Credit Card Surcharging Legal in New York? A Plain-English Guide to GBL §518</h1>
       <p class="dek">Short answer: yes, since February 2024 &mdash; but only if you post the price correctly. Here is exactly what New York requires, what it does not, and how a surcharge differs from a cash discount.</p>
-      <p class="meta">Updated August 2026 &middot; 5 Apollo</p>
+      <p class="meta">Updated October 2026 &middot; 5 Apollo</p>
     </header>
     <div class="body">
 <p>For years, charging customers extra for paying by credit card was flatly illegal in New York. That changed on <strong>February 11, 2024</strong>, when an amendment to General Business Law &sect;518 (Senate Bill S1048A) took effect. Surcharging is now legal in New York &mdash; but the law is specific about disclosure, and getting it wrong carries a real penalty.</p>
+
+<div class="callout"><strong>Quick answer.</strong> Yes. Since February 11, 2024, surcharging is legal in New York under GBL &sect;518, but only if you post the <strong>total price a card customer will pay</strong> before they reach the register, and the surcharge cannot exceed your actual cost of processing that transaction. Violations carry civil penalties of up to $500 each. Cash discounts and dual pricing have different mechanics and are covered below.</div>
 
 <h2>What GBL §518 actually requires</h2>
 <p>If you charge a customer more for paying with a credit card than for cash, you must clearly and conspicuously post the <strong>total price the card customer will pay, including the surcharge</strong>, before they reach the register. You cannot advertise $20 and add a surcharge at checkout. If $20 is what a card customer pays, $20 is what has to be posted.</p>
@@ -124,6 +130,12 @@ footer.site a{color:#C3CEBD}
 </tbody></table></div>
 <p>In practice, dual pricing is the hardest of the three to get wrong, because the required disclosure &mdash; both prices, visible together, before payment &mdash; is built into how the program operates rather than being something staff have to remember to say.</p>
 
+<h2>Does the law apply in New York City?</h2>
+<p>GBL &sect;518 is a state law, so it applies to businesses throughout New York State, including all five boroughs. Enforcement is not limited to the state: municipal consumer affairs offices and local government attorneys can enforce it as well. NYC&rsquo;s own 311 guidance for businesses is listed in the sources below.</p>
+
+<h2>What about debit cards?</h2>
+<p>The statute&rsquo;s surcharge rules are about credit card payments, and the card networks separately restrict which card types can be surcharged at all. If you are considering surcharging anything other than a standard credit card, get your processor to confirm in writing what your terminal is configured to do. This is one of the most common places for a default setting to be out of compliance.</p>
+
 <h2>What it costs to get this wrong</h2>
 <p>Violations carry a civil penalty of <strong>up to $500 per violation</strong>, enforceable by the Attorney General and, concurrently, by municipal consumer affairs offices and local government attorneys. Note the unit: per violation, not per business.</p>
 <p>Separately from the state, the card networks enforce their own surcharge rules and can fine merchants who break them, independently of anything the state does. A setup can be wrong in two directions at once, enforced by two parties who are not coordinating.</p>
@@ -131,6 +143,7 @@ footer.site a{color:#C3CEBD}
 <div class="callout"><strong>The two mistakes that actually get flagged:</strong> posting one price and revealing the surcharge only at the register, and setting a surcharge percentage higher than what your processor actually charges you. Neither is usually intentional. Both are typically left over from a previous processor's default terminal configuration, which is exactly why they survive for years without anyone noticing.</div>
 
 <h2>Setting this up correctly</h2>
+<p>If you would rather not run a surcharge at all, a <a href="../cash-discount-program.html">cash discount program</a> lists the card price and discounts cash, and we configure signage, receipt text and terminal programming for New York. Details on how we work in the city are on our <a href="../pos-installation-nyc.html">NYC installation page</a>.</p>
 <ol>
 <li><strong>Pick the approach that matches how you take orders.</strong> Quick service, retail, and counter service generally do best with dual pricing. Full-service restaurants with tip lines, split checks, and printed menus often do better with a straight lower processing rate instead.</li>
 <li><strong>Configure the terminal to display the total card price before payment</strong>, not as an addition after the fact.</li>
@@ -138,24 +151,36 @@ footer.site a{color:#C3CEBD}
 <li><strong>Re-check your surcharge percentage against your actual cost at least annually.</strong> Processors change pricing. A surcharge that was compliant the day it was set can drift out of compliance when your underlying rate moves and nobody adjusts it.</li>
 </ol>
 
+<div class="callout"><strong>Compliance checklist.</strong>
+<ul style="margin:10px 0 0">
+<li>The total card price is posted <em>before</em> the customer reaches the register, not added at checkout.</li>
+<li>No wall or register sign saying a percentage fee applies to credit card sales as a substitute for posting the price.</li>
+<li>No separate &ldquo;convenience,&rdquo; &ldquo;service,&rdquo; &ldquo;processing&rdquo; or &ldquo;non-cash adjustment&rdquo; line that appears only on the receipt.</li>
+<li>Your surcharge percentage does not exceed what your processor actually charges you, and is re-checked at least annually.</li>
+<li>Terminal programming, receipts and signage all match each other.</li>
+</ul></div>
+<h2>Frequently asked questions</h2><details><summary>Is credit card surcharging legal in New York?</summary><p>Yes, since February 11, 2024, when an amendment to General Business Law &sect;518 (Senate Bill S1048A) took effect. You must clearly and conspicuously post the total price a card customer will pay, including the surcharge, before they reach the register.</p></details><details><summary>How much can a New York business surcharge?</summary><p>The surcharge cannot exceed what your processor actually charges you for that transaction, and the card networks set their own caps and rules in operating regulations. You are bound by whichever is lower, and your processor should confirm your current numbers.</p></details><details><summary>Is a sign at the register that says &ldquo;4% fee on credit cards&rdquo; legal?</summary><p>No. The New York Department of State lists a wall or register sign saying a fee applies to credit card sales, without posting the total price, as illegal. The test is whether the customer could see the total price they would pay before deciding to buy.</p></details><details><summary>What is the penalty for violating GBL &sect;518?</summary><p>Civil penalties of up to $500 per violation, enforceable by the Attorney General and concurrently by municipal consumer affairs offices and local government attorneys. The card networks can also fine merchants who break their own surcharge rules.</p></details><details><summary>What is the difference between a surcharge and a cash discount?</summary><p>A surcharge adds a fee at checkout for paying by card and requires up-front disclosure of the total card price. A cash discount lists one price and gives cash payers a discount off it, and has always been legal in New York. Dual pricing, with both prices posted side by side, is permitted by name in the statute.</p></details><details><summary>Does this apply to businesses in New York City?</summary><p>Yes. GBL &sect;518 is a state law that applies across New York State, including all five boroughs.</p></details>
 <div class="cta-band"><h3>Get your setup checked, free</h3><p>Send us your current statement and terminal settings. We will tell you whether your surcharge or dual pricing setup is actually compliant, at no cost and with no obligation.</p><a href="../index.html#get-started">Get a free statement analysis</a></div>
 <div class="sources"><h3>Sources</h3><ol><li>New York Department of State, Credit Card Surcharge one-page reference guide (April 2024) &mdash; <a href="https://dos.ny.gov/system/files/documents/2024/04/2024-04-10-dos-dcp-credit-card-surcharge-one-page-reference-guide.pdf" target="_blank" rel="noopener">dos.ny.gov</a></li><li>Full text of General Business Law &sect;518, New York State Senate &mdash; <a href="https://www.nysenate.gov/legislation/laws/GBS/518" target="_blank" rel="noopener">nysenate.gov</a></li><li>NYC 311, credit card surcharge guidance for businesses &mdash; <a href="https://portal.311.nyc.gov/article/?kanumber=KA-03682" target="_blank" rel="noopener">portal.311.nyc.gov</a></li><li>New York Department of State business resources &mdash; <a href="https://dos.ny.gov/business-resources" target="_blank" rel="noopener">dos.ny.gov</a></li></ol><p style="font-size:.82rem;color:#5A6852;margin:12px 0 0">Card network surcharge caps and rules are set by Visa and Mastercard in operating regulations not published in full for merchants. Confirm current requirements with your processor before setting a surcharge.</p></div>
-<p class="disclaimer">Legal and illegal examples above are drawn from New York Department of State guidance published in 2024. This article is provided for general educational purposes and reflects information available as of August 2026. It is not legal or compliance advice, and it is not a substitute for reviewing your own merchant agreement or consulting an attorney about your specific situation. Card network rules, state law, and processor pricing change; verify current requirements with your processor or the relevant regulator before acting.</p>
+<p class="disclaimer">Legal and illegal examples above are drawn from New York Department of State guidance published in 2024. This article is provided for general educational purposes and reflects information available as of October 2026. It is not legal or compliance advice, and it is not a substitute for reviewing your own merchant agreement or consulting an attorney about your specific situation. Card network rules, state law, and processor pricing change; verify current requirements with your processor or the relevant regulator before acting.</p>
     </div>
   </article>
   <div class="related">
     <h3>Related guides</h3>
-    <ul><li><a href="dedicated-vs-aggregate-merchant-account.html">Why did Square or PayPal hold my funds?</a></li><li><a href="how-to-read-your-merchant-statement.html">How to read your own merchant statement</a></li><li><a href="why-did-my-processing-rate-go-up.html">Why did my processing rate go up?</a></li></ul>
+    <ul><li><a href="../cash-discount-program.html">Cash discount program</a></li><li><a href="../pos-installation-nyc.html">POS installation in NYC</a></li><li><a href="dedicated-vs-aggregate-merchant-account.html">Why did Square or PayPal hold my funds?</a></li><li><a href="how-to-read-your-merchant-statement.html">How to read your own merchant statement</a></li><li><a href="why-did-my-processing-rate-go-up.html">Why did my processing rate go up?</a></li></ul>
   </div>
 </main>
 <footer class="site">
   <div class="wrap"><p>&copy; 2026 5 Apollo LLC &middot; <a href="../index.html">5apollo.co</a> &middot; <a href="../privacy.html">Privacy</a></p></div>
 </footer>
 <script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is credit card surcharging legal in New York?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, since February 11, 2024, when an amendment to General Business Law §518 (Senate Bill S1048A) took effect. You must clearly and conspicuously post the total price a card customer will pay, including the surcharge, before they reach the register."}}, {"@type": "Question", "name": "How much can a New York business surcharge?", "acceptedAnswer": {"@type": "Answer", "text": "The surcharge cannot exceed what your processor actually charges you for that transaction, and the card networks set their own caps and rules in operating regulations. You are bound by whichever is lower, and your processor should confirm your current numbers."}}, {"@type": "Question", "name": "Is a sign at the register that says “4% fee on credit cards” legal?", "acceptedAnswer": {"@type": "Answer", "text": "No. The New York Department of State lists a wall or register sign saying a fee applies to credit card sales, without posting the total price, as illegal. The test is whether the customer could see the total price they would pay before deciding to buy."}}, {"@type": "Question", "name": "What is the penalty for violating GBL §518?", "acceptedAnswer": {"@type": "Answer", "text": "Civil penalties of up to $500 per violation, enforceable by the Attorney General and concurrently by municipal consumer affairs offices and local government attorneys. The card networks can also fine merchants who break their own surcharge rules."}}, {"@type": "Question", "name": "What is the difference between a surcharge and a cash discount?", "acceptedAnswer": {"@type": "Answer", "text": "A surcharge adds a fee at checkout for paying by card and requires up-front disclosure of the total card price. A cash discount lists one price and gives cash payers a discount off it, and has always been legal in New York. Dual pricing, with both prices posted side by side, is permitted by name in the statute."}}, {"@type": "Question", "name": "Does this apply to businesses in New York City?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. GBL §518 is a state law that applies across New York State, including all five boroughs."}}]}
+</script>
+<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article",
 "headline":"Is Credit Card Surcharging Legal in New York? A Plain-English Guide to GBL \u00a7518",
 "description":"A plain-English guide to New York's credit card surcharge law (GBL 518): what the state says is legal and illegal, with examples straight from the NY Department of State's own guidance.",
-"datePublished":"2026-08-04","dateModified":"2026-08-04",
+"datePublished":"2026-08-04","dateModified":"2026-10-29",
 "author":{"@type":"Organization","name":"5 Apollo"},
 "publisher":{"@type":"Organization","name":"5 Apollo"},
 "mainEntityOfPage":"https://5apollo.co/articles/ny-surcharge-law.html"}
